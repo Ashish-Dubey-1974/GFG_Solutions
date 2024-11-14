@@ -102,6 +102,16 @@ class Solution {
     Node addNode(Node head, int p, int x) {
         // Your code here
         Node add = new Node(x);
+         if (p == 0) {
+            Node temp2 = head.next;  // Store the node currently after head
+            head.next = add;         // Set head.next to the new node
+            add.prev = head;         // Link new node's prev to head
+            add.next = temp2;        // Link new node's next to temp2
+            if (temp2 != null) {     // Update temp2's prev if it exists
+                temp2.prev = add;
+            }
+            return head;             // Head remains the same
+        }
         Node temp=head;
         int position = 0;
         while(temp!=null){
